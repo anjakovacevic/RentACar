@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AddWindow" Height="450" Width="500" Background="#F0F4F8">
+        Title="AddWindow" Height="450" Width="450" Background="#F0F4F8">
     <Window.Resources>
         <Style x:Key="LabelStyle" TargetType="Label">
             <Setter Property="Foreground" Value="#007ACC"/>
@@ -82,17 +82,15 @@
         <TextBox Name="vehicleIDTxt" Grid.Row="0" Grid.Column="1" Text="{Binding Path=VehicleID}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
 
         <Label Content="Location ID:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
-        <!--<ComboBox Name="locationIDCmb" Grid.Row="1" Grid.Column="1" SelectedValue="{Binding Path=LocationID}" DisplayMemberPath="LocationID" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource ComboBoxStyle}"/>-->
         <ComboBox Name="locationIDCmb" 
-          Grid.Row="1" 
-          Grid.Column="1" 
-          SelectedValue="{Binding Path=LocationID}" 
-          DisplayMemberPath="LocationID" 
-          SelectedValuePath="LocationID"
-          HorizontalAlignment="Left" 
-          VerticalAlignment="Center" 
-          Style="{StaticResource ComboBoxStyle}"/>
-
+                  Grid.Row="1" 
+                  Grid.Column="1" 
+                  SelectedValue="{Binding Path=LocationID}" 
+                  DisplayMemberPath="LocationID" 
+                  SelectedValuePath="LocationID"
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Center" 
+                  Style="{StaticResource ComboBoxStyle}"/>
 
         <Label Content="License Plate:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
         <TextBox Name="licensePlateTxt" Grid.Row="2" Grid.Column="1" Text="{Binding Path=LicensePlate}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
@@ -103,20 +101,16 @@
         <Label Content="Year:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
         <TextBox Name="yearTxt" Grid.Row="4" Grid.Column="1" Text="{Binding Path=Year}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
 
-        <!--Style="{StaticResource ComboBoxStyle}"-->
-
         <Label Content="Rental State:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
-        <!--<ComboBox Name="rentalStateCmb" Grid.Row="5" Grid.Column="1" SelectedValue="{Binding Path=RentalState}" SelectedValuePath="Content" HorizontalAlignment="Left" VerticalAlignment="Center">-->
-        <ComboBox Name="rentalStateCmb" Grid.Row="5" Grid.Column="1" >
+        <ComboBox Name="rentalStateCmb" Grid.Row="5" Grid.Column="1" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center">
             <ComboBoxItem Content="Available" />
             <ComboBoxItem Content="Rented" />
             <ComboBoxItem Content="Maintenance" />
             <ComboBoxItem Content="Reserved" />
         </ComboBox>
 
-        <Label Content="Rental Status:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
-        <!--<ComboBox Name="rentalStatusCmb" Grid.Row="6" Grid.Column="1" SelectedValue="{Binding Path=RentalStatus}" SelectedValuePath="Content" HorizontalAlignment="Left" VerticalAlignment="Center">-->
-        <ComboBox Name="rentalStatusCmb" Grid.Row="6" Grid.Column="1" >
+        <Label Content="Rental Status:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment='Center' Style="{StaticResource LabelStyle}"/>
+        <ComboBox Name="rentalStatusCmb" Grid.Row="6" Grid.Column="1" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center">
             <ComboBoxItem Content="Active" />
             <ComboBoxItem Content="Inactive" />
             <ComboBoxItem Content="Pending" />

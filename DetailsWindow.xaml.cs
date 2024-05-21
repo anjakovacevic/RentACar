@@ -11,7 +11,14 @@ namespace Projekat
         public DetailsWindow(string details)
         {
             InitializeComponent();
-            PopulateDetails(details);
+            try
+            {
+                PopulateDetails(details);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while populating details: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void PopulateDetails(string details)

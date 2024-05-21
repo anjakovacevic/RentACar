@@ -56,13 +56,34 @@ namespace Projekat
 
             this.DataContext = this;
         }
-
+        /*
         private void DetailsBtn_Click(object sender, RoutedEventArgs e)
         {
             string details = SelectedTab == 0 ? SelectedCar?.ToString() ?? "No car selected." : SelectedLocation?.ToString() ?? "No location selected.";
             DetailsWindow detailsWindow = new DetailsWindow(details);
-            detailsWindow.ShowDialog();
+           // detailsWindow.ShowDialog();
         }
+        */
+        private void DetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedTab == 0)
+            {
+                string details = SelectedCar?.ToString() ?? "No car selected.";
+                DetailsWindow detailsWindow = new DetailsWindow(details);
+                detailsWindow.ShowDialog();
+            }
+            else if (SelectedTab == 1)
+            {
+                string details = SelectedLocation?.ToString() ?? "No location selected.";
+                DetailsWindow detailsWindow = new DetailsWindow(details);
+                detailsWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No valid tab selected.");
+            }
+        }
+
 
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
