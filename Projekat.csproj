@@ -130,16 +130,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\delete.jpg" />
-    <Resource Include="Icons\update.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="beleske.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\info.png" />
     <Resource Include="Icons\trash.png" />
     <Resource Include="Icons\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\maps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\rentacar.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

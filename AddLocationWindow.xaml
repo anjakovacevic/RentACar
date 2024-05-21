@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AddLocationWindow" Height="400" Width="450" Background="#F0F4F8">
+        Title="AddLocationWindow" Height="450" Width="450" Background="#F0F4F8">
     <Window.Resources>
         <Style x:Key="LabelStyle" TargetType="Label">
             <Setter Property="Foreground" Value="#007ACC"/>
@@ -64,6 +64,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -92,9 +93,13 @@
         <Label Content="Staff Count:" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
         <TextBox Name="staffCountTxt" Grid.Row="7" Grid.Column="1" Text="{Binding Path=StaffCount}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
 
-        <StackPanel Grid.Row="9" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+        <Label Content="Google Maps URL:" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
+        <TextBox Name="googleMapsUrlTxt" Grid.Row="8" Grid.Column="1" Text="{Binding Path=GoogleMapsUrl}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
+
+        <StackPanel Grid.Row="10" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Ok" Click="AddBtn_Click" Style="{StaticResource ButtonStyle}"/>
             <Button Content="Cancel" Click="Button_Click" Style="{StaticResource ButtonStyle}"/>
         </StackPanel>
     </Grid>
 </Window>
+

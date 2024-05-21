@@ -24,12 +24,14 @@ namespace Projekat
                 NewLocation.PhoneNumber = locationInfo.PhoneNumber;
                 NewLocation.Email = locationInfo.Email;
                 NewLocation.StaffCount = locationInfo.StaffCount;
+                NewLocation.GoogleMapsUrl = locationInfo.GoogleMapsUrl;  // Add this line
 
                 this.Title = "Update Location";
                 locationIDTxt.IsReadOnly = true;
             }
             else
             {
+                NewLocation.LocationID = GenerateUniqueLocationID();
                 this.Title = "Add Location";
                 locationIDTxt.IsReadOnly = false;
             }
@@ -53,6 +55,7 @@ namespace Projekat
                         updateLocation.PhoneNumber = NewLocation.PhoneNumber;
                         updateLocation.Email = NewLocation.Email;
                         updateLocation.StaffCount = NewLocation.StaffCount;
+                        updateLocation.GoogleMapsUrl = NewLocation.GoogleMapsUrl;
                     }
                 }
                 else
@@ -187,7 +190,40 @@ namespace Projekat
                 staffCountTxt.ClearValue(BorderBrushProperty);
             }
 
+            if (String.IsNullOrWhiteSpace(googleMapsUrlTxt.Text))
+            {
+                retVal = false;
+                errorMessage += "Enter Google Maps URL!\n";
+                googleMapsUrlTxt.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                googleMapsUrlTxt.ClearValue(BorderBrushProperty);
+            }
+
             return retVal;
         }
+
+        private string GenerateUniqueLocationID()
+        {
+            string datePart = DateTime.Now.ToString("yyyyMMdd"); // Current date in YYYYMMDD format
+            int sequenceNumber = 1; // Default sequence number
+
+            // Find the maximum sequence number for the current date
+            var existingIds = RentACarContext.Instance.Locations
+                .Where(l => l.LocationID.StartsWith(datePart))
+                .Select(l => l.LocationID)
+                .ToList();
+
+            if (existingIds.Any())
+            {
+                sequenceNumber = existingIds
+                    .Select(id => int.Parse(id.Substring(8))) // Extract the sequence number part
+                    .Max() + 1; // Increment the maximum sequence number
+            }
+
+            return $"{datePart}{sequenceNumber:D3}"; // Combine date part with sequence number (3 digits)
+        }
+
     }
 }

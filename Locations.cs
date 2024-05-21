@@ -37,6 +37,8 @@ namespace Projekat
         // Navigation property back to Cars
         public virtual ICollection<Cars> Cars { get; set; }
 
+        public string GoogleMapsUrl { get; set; }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -48,6 +50,7 @@ namespace Projekat
             sb.AppendLine($"Phone Number: {PhoneNumber}");
             sb.AppendLine($"Email: {Email}");
             sb.AppendLine($"Staff Count: {StaffCount}");
+            sb.AppendLine($"Google Maps URL: {GoogleMapsUrl}");
             sb.AppendLine("Cars:");
 
             //foreach (var car in Cars)

@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Projekat
 {
@@ -32,7 +21,6 @@ namespace Projekat
             set
             {
                 selectedCar = value;
-                // Notify property changed if implementing INotifyPropertyChanged (not shown here)
             }
         }
 
@@ -42,7 +30,6 @@ namespace Projekat
             set
             {
                 selectedLocation = value;
-                // Notify property changed if implementing INotifyPropertyChanged (not shown here)
             }
         }
 
@@ -52,7 +39,6 @@ namespace Projekat
             set
             {
                 selectedTab = value;
-                // Notify property changed if implementing INotifyPropertyChanged (not shown here)
             }
         }
 
@@ -63,23 +49,14 @@ namespace Projekat
             // Load data for Cars
             RentACarContext.Instance.Cars.Load();
             dataGridCars.ItemsSource = RentACarContext.Instance.Cars.Local;
-            //this.DataContext = RentACarContext.Instance;
 
             // Load data for Locations
             RentACarContext.Instance.Locations.Load();
             dataGridLocations.ItemsSource = RentACarContext.Instance.Locations.Local;
 
-            //this.DataContext = RentACarContext.Instance;
             this.DataContext = this;
         }
 
-        //private void DetailsBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (SelectedTab == 0) // Cars tab
-        //        MessageBox.Show(SelectedCar?.ToString() ?? "No car selected.");
-        //    else if (SelectedTab == 1) // Locations tab
-        //        MessageBox.Show(SelectedLocation?.ToString() ?? "No location selected.");
-        //}
         private void DetailsBtn_Click(object sender, RoutedEventArgs e)
         {
             string details = SelectedTab == 0 ? SelectedCar?.ToString() ?? "No car selected." : SelectedLocation?.ToString() ?? "No location selected.";
@@ -105,16 +82,14 @@ namespace Projekat
                 try
                 {
                     RentACarContext.Instance.SaveChanges();
-                    MessageBox.Show("Changes saved successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"An error occurred while saving changes: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    // Optionally log the error or perform additional actions
+                    
                 }
             }
         }
-
 
         private void AddCarBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -125,12 +100,10 @@ namespace Projekat
             try
             {
                 RentACarContext.Instance.SaveChanges();
-                //MessageBox.Show("Car added successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred while saving the new car: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                // Optionally log the error or perform additional actions
             }
         }
 
@@ -143,12 +116,10 @@ namespace Projekat
             try
             {
                 RentACarContext.Instance.SaveChanges();
-                // MessageBox.Show("Location added successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred while saving the new location: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                // Optionally log the error or perform additional actions
             }
         }
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
@@ -169,12 +140,27 @@ namespace Projekat
             try
             {
                 RentACarContext.Instance.SaveChanges();
-                MessageBox.Show("Changes saved successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred while saving changes: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                // Optionally log the error or perform additional actions
+            }
+        }
+
+        private void OpenMapButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                var url = button.Tag as string;
+                if (!string.IsNullOrEmpty(url))
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = url,
+                        UseShellExecute = true
+                    });
+                }
             }
         }
 

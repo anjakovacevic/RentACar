@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace Projekat
 {
@@ -13,7 +16,7 @@ namespace Projekat
 
         private void PopulateDetails(string details)
         {
-            var detailLines = details.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+            var detailLines = details.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var line in detailLines)
             {
                 var parts = line.Split(new[] { ':' }, 2);
@@ -30,15 +33,43 @@ namespace Projekat
                     };
                     Grid.SetColumn(label, 0);
 
-                    var value = new TextBlock
+                    if (parts[0].Trim() == "Google Maps URL")
                     {
-                        Text = parts[1].Trim(),
-                        Style = (Style)Resources["DetailValueStyle"]
-                    };
-                    Grid.SetColumn(value, 1);
+                        var link = new Hyperlink
+                        {
+                            NavigateUri = new Uri(parts[1].Trim()),
+                            Inlines = { parts[1].Trim() }
+                        };
+                        link.RequestNavigate += (s, e) =>
+                        {
+                            Process.Start(new ProcessStartInfo
+                            {
+                                FileName = e.Uri.AbsoluteUri,
+                                UseShellExecute = true
+                            });
+                        };
 
-                    row.Children.Add(label);
-                    row.Children.Add(value);
+                        var value = new TextBlock
+                        {
+                            Style = (Style)Resources["DetailValueStyle"]
+                        };
+                        value.Inlines.Add(link);
+                        Grid.SetColumn(value, 1);
+                        row.Children.Add(label);
+                        row.Children.Add(value);
+                    }
+                    else
+                    {
+                        var value = new TextBlock
+                        {
+                            Text = parts[1].Trim(),
+                            Style = (Style)Resources["DetailValueStyle"]
+                        };
+                        Grid.SetColumn(value, 1);
+                        row.Children.Add(label);
+                        row.Children.Add(value);
+                    }
+
                     DetailsStackPanel.Children.Add(row);
                 }
             }
