@@ -1,0 +1,13 @@
+﻿ok Neka kod AddWindow pri upisivanju novog auta za VehicleID iskoci Combo box sa ponudjenim lokacijama
+
+Dodavanje slike auta
+
+Dodavanje google maps ikonice i linka
+
+crna ili svetla pozadina dugme sa material design
+
+ok srediti details window
+
+ok osetljiv deo koda je database savechanges dodati try catch
+ok da li primary key vec postoji
+

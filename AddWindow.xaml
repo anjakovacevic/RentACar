@@ -1,0 +1,137 @@
+﻿<Window x:Class="Projekat.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="AddWindow" Height="450" Width="500" Background="#F0F4F8">
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="#007ACC"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="#007ACC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="250"/>
+        </Style>
+
+        <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="#007ACC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="250"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="#005F99"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="20" 
+                                SnapsToDevicePixels="true">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="3" Opacity="0.5" BlurRadius="5"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Vehicle ID:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
+        <TextBox Name="vehicleIDTxt" Grid.Row="0" Grid.Column="1" Text="{Binding Path=VehicleID}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
+
+        <Label Content="Location ID:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
+        <!--<ComboBox Name="locationIDCmb" Grid.Row="1" Grid.Column="1" SelectedValue="{Binding Path=LocationID}" DisplayMemberPath="LocationID" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource ComboBoxStyle}"/>-->
+        <ComboBox Name="locationIDCmb" 
+          Grid.Row="1" 
+          Grid.Column="1" 
+          SelectedValue="{Binding Path=LocationID}" 
+          DisplayMemberPath="LocationID" 
+          SelectedValuePath="LocationID"
+          HorizontalAlignment="Left" 
+          VerticalAlignment="Center" 
+          Style="{StaticResource ComboBoxStyle}"/>
+
+
+        <Label Content="License Plate:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
+        <TextBox Name="licensePlateTxt" Grid.Row="2" Grid.Column="1" Text="{Binding Path=LicensePlate}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
+
+        <Label Content="Model:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
+        <TextBox Name="modelTxt" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Model}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
+
+        <Label Content="Year:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
+        <TextBox Name="yearTxt" Grid.Row="4" Grid.Column="1" Text="{Binding Path=Year}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
+
+        <!--Style="{StaticResource ComboBoxStyle}"-->
+
+        <Label Content="Rental State:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
+        <!--<ComboBox Name="rentalStateCmb" Grid.Row="5" Grid.Column="1" SelectedValue="{Binding Path=RentalState}" SelectedValuePath="Content" HorizontalAlignment="Left" VerticalAlignment="Center">-->
+        <ComboBox Name="rentalStateCmb" Grid.Row="5" Grid.Column="1" >
+            <ComboBoxItem Content="Available" />
+            <ComboBoxItem Content="Rented" />
+            <ComboBoxItem Content="Maintenance" />
+            <ComboBoxItem Content="Reserved" />
+        </ComboBox>
+
+        <Label Content="Rental Status:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
+        <!--<ComboBox Name="rentalStatusCmb" Grid.Row="6" Grid.Column="1" SelectedValue="{Binding Path=RentalStatus}" SelectedValuePath="Content" HorizontalAlignment="Left" VerticalAlignment="Center">-->
+        <ComboBox Name="rentalStatusCmb" Grid.Row="6" Grid.Column="1" >
+            <ComboBoxItem Content="Active" />
+            <ComboBoxItem Content="Inactive" />
+            <ComboBoxItem Content="Pending" />
+            <ComboBoxItem Content="Cancelled" />
+        </ComboBox>
+
+        <Label Content="Mileage:" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
+        <TextBox Name="mileageTxt" Grid.Row="7" Grid.Column="1" Text="{Binding Path=Mileage}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
+
+        <Label Content="Last Service Date:" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
+        <TextBox Name="lastServiceDateTxt" Grid.Row="8" Grid.Column="1" Text="{Binding Path=LastServiceDate}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
+
+        <StackPanel Grid.Row="10" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Ok" Click="AddBtn_Click" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Cancel" Click="Button_Click" Style="{StaticResource ButtonStyle}"/>
+        </StackPanel>
+    </Grid>
+</Window>
