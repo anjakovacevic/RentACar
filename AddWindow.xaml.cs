@@ -222,6 +222,12 @@ namespace Projekat
                 errors.AppendLine("Enter a valid Last Service Date (format: MM/DD/YYYY)!");
                 lastServiceDateTxt.BorderBrush = Brushes.Red;
             }
+            else if (serviceDate > DateTime.Now)
+            {
+                retVal = false;
+                errors.AppendLine("Last Service Date cannot be in the future!");
+                lastServiceDateTxt.BorderBrush = Brushes.Red;
+            }
             else
             {
                 lastServiceDateTxt.ClearValue(BorderBrushProperty);
