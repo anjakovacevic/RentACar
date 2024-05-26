@@ -31,6 +31,14 @@
             <Setter Property="Width" Value="250"/>
         </Style>
 
+        <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderBrush" Value="#007ACC"/>
+            <Setter Property="BorderThickness" Value="0.7"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="250"/>
+        </Style>
+        
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#007ACC"/>
             <Setter Property="Foreground" Value="White"/>
@@ -123,8 +131,10 @@
         <TextBox Name="mileageTxt" Grid.Row="7" Grid.Column="1" Text="{Binding Path=Mileage}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
 
         <Label Content="Last Service Date:" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
-        <TextBox Name="lastServiceDateTxt" Grid.Row="8" Grid.Column="1" Text="{Binding Path=LastServiceDate}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
-
+        <!--<TextBox Name="lastServiceDateTxt" Grid.Row="8" Grid.Column="1" Text="{Binding Path=LastServiceDate}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>-->
+        <DatePicker Name="lastServiceDatePicker" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource DatePickerStyle}"
+            SelectedDate="{Binding LastServiceDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        
         <StackPanel Grid.Row="10" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Ok" Click="AddBtn_Click" Style="{StaticResource ButtonStyle}"/>
             <Button Content="Cancel" Click="Button_Click" Style="{StaticResource ButtonStyle}"/>

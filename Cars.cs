@@ -34,7 +34,7 @@ namespace Projekat
         private RentalStateEnum rentalState;
         private RentalStatusEnum rentalStatus;
         private int mileage;
-        private string lastServiceDate;
+        private DateTime? lastServiceDate;
         #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -127,7 +127,7 @@ namespace Projekat
             }
         }
 
-        public string LastServiceDate
+        public DateTime? LastServiceDate
         {
             get { return lastServiceDate; }
             set

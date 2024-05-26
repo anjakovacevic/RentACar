@@ -216,6 +216,23 @@ namespace Projekat
                 mileageTxt.ClearValue(BorderBrushProperty);
             }
 
+            if (!lastServiceDatePicker.SelectedDate.HasValue)
+            {
+                retVal = false;
+                errors.AppendLine("Enter a valid Last Service Date!");
+                lastServiceDatePicker.BorderBrush = Brushes.Red;
+            }
+            else if (lastServiceDatePicker.SelectedDate.Value > DateTime.Now)
+            {
+                retVal = false;
+                errors.AppendLine("Last Service Date cannot be in the future!");
+                lastServiceDatePicker.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                lastServiceDatePicker.ClearValue(BorderBrushProperty);
+            }
+            /*
             if (String.IsNullOrWhiteSpace(lastServiceDateTxt.Text) || !DateTime.TryParse(lastServiceDateTxt.Text, out DateTime serviceDate))
             {
                 retVal = false;
@@ -232,7 +249,7 @@ namespace Projekat
             {
                 lastServiceDateTxt.ClearValue(BorderBrushProperty);
             }
-
+            */
             if (locationIDCmb.SelectedItem == null || locationIDCmb.SelectedValue.ToString().Length > 50)
             {
                 retVal = false;
