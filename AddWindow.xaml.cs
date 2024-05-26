@@ -264,7 +264,5 @@ namespace Projekat
 
             return $"{prefix}{(maxId + 1):D5}"; // Generate a new ID with the prefix and 5-digit sequence number
         }
-
-
     }
 }

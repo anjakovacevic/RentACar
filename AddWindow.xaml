@@ -102,7 +102,8 @@
         <TextBox Name="yearTxt" Grid.Row="4" Grid.Column="1" Text="{Binding Path=Year}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TextBoxStyle}"/>
 
         <Label Content="Rental State:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>
-        <ComboBox Name="rentalStateCmb" Grid.Row="5" Grid.Column="1" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <ComboBox Name="rentalStateCmb" Grid.Row="5" Grid.Column="1" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center"
+          SelectedValue="{Binding RentalState, Mode=TwoWay}" SelectedValuePath="Content">
             <ComboBoxItem Content="Available" />
             <ComboBoxItem Content="Rented" />
             <ComboBoxItem Content="Maintenance" />
@@ -110,7 +111,8 @@
         </ComboBox>
 
         <Label Content="Rental Status:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment='Center' Style="{StaticResource LabelStyle}"/>
-        <ComboBox Name="rentalStatusCmb" Grid.Row="6" Grid.Column="1" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <ComboBox Name="rentalStatusCmb" Grid.Row="6" Grid.Column="1" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center"
+          SelectedValue="{Binding RentalStatus, Mode=TwoWay}" SelectedValuePath="Content">
             <ComboBoxItem Content="Active" />
             <ComboBoxItem Content="Inactive" />
             <ComboBoxItem Content="Pending" />
