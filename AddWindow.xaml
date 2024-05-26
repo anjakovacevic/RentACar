@@ -15,7 +15,7 @@
 
         <Style x:Key="TextBoxStyle" TargetType="TextBox">
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Padding" Value="3"/>
             <Setter Property="BorderBrush" Value="#007ACC"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Height" Value="25"/>
@@ -118,13 +118,13 @@
             <ComboBoxItem Content="Reserved" />
         </ComboBox>
 
-        <Label Content="Rental Status:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment='Center' Style="{StaticResource LabelStyle}"/>
+        <Label Content="Rental Type:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment='Center' Style="{StaticResource LabelStyle}"/>
         <ComboBox Name="rentalStatusCmb" Grid.Row="6" Grid.Column="1" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center"
           SelectedValue="{Binding RentalStatus, Mode=TwoWay}" SelectedValuePath="Content">
-            <ComboBoxItem Content="Active" />
-            <ComboBoxItem Content="Inactive" />
-            <ComboBoxItem Content="Pending" />
-            <ComboBoxItem Content="Cancelled" />
+            <ComboBoxItem Content="Sedan" />
+            <ComboBoxItem Content="SUV" />
+            <ComboBoxItem Content="Hatchback" />
+            <ComboBoxItem Content="Luxury" />
         </ComboBox>
 
         <Label Content="Mileage:" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource LabelStyle}"/>

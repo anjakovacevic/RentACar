@@ -19,10 +19,10 @@ namespace Projekat
 
         public enum RentalStatusEnum
         {
-            Active,
-            Inactive,
-            Pending,
-            Cancelled
+            Sedan,
+            SUV,
+            Hatchback,
+            Luxury
         }
 
         #region Fields

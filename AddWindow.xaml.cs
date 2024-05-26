@@ -232,24 +232,6 @@ namespace Projekat
             {
                 lastServiceDatePicker.ClearValue(BorderBrushProperty);
             }
-            /*
-            if (String.IsNullOrWhiteSpace(lastServiceDateTxt.Text) || !DateTime.TryParse(lastServiceDateTxt.Text, out DateTime serviceDate))
-            {
-                retVal = false;
-                errors.AppendLine("Enter a valid Last Service Date (format: MM/DD/YYYY)!");
-                lastServiceDateTxt.BorderBrush = Brushes.Red;
-            }
-            else if (serviceDate > DateTime.Now)
-            {
-                retVal = false;
-                errors.AppendLine("Last Service Date cannot be in the future!");
-                lastServiceDateTxt.BorderBrush = Brushes.Red;
-            }
-            else
-            {
-                lastServiceDateTxt.ClearValue(BorderBrushProperty);
-            }
-            */
             if (locationIDCmb.SelectedItem == null || locationIDCmb.SelectedValue.ToString().Length > 50)
             {
                 retVal = false;
@@ -266,7 +248,7 @@ namespace Projekat
         }
         private string GenerateUniqueCarID()
         {
-            string prefix = "CAR"; // You can customize the prefix as needed
+            string prefix = "CAR";
             int maxId = 0;
 
             var existingIds = RentACarContext.Instance.Cars
@@ -285,7 +267,7 @@ namespace Projekat
                 }
             }
 
-            return $"{prefix}{(maxId + 1):D5}"; // Generate a new ID with the prefix and 5-digit sequence number
+            return $"{prefix}{(maxId + 1):D5}";
         }
     }
 }
