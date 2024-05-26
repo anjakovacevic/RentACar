@@ -15,7 +15,7 @@
         <Style x:Key="DetailValueStyle" TargetType="TextBlock">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Foreground" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="#005F99"/>
         </Style>
 
         <!-- Define button style with rounded corners and shadow -->
